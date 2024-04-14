@@ -9,95 +9,85 @@
     <meta charset="UTF-8">
     <title>수강신청 홈페이지</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <script>
-        /* 전체 페이지 스타일 */
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Noto Sans KR', sans-serif;
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
         }
 
-        /* 컨테이너 및 중앙 정렬 */
         .container {
             background-color: #ffffff;
-            padding: 20px;
+            padding: 40px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
             max-width: 800px;
-            margin: 20px auto;
+            margin: 50px auto;
         }
 
-        /* 제목 스타일 */
         h3 {
             color: #333;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
-        /* 폼 스타일 */
-        .sf\:form {
-            margin-top: 20px;
+        .form-group {
+            margin-bottom: 25px;
         }
 
-        /* 입력 필드 스타일 */
-        .sf\:input[type="text"], .sf\:input[type="hidden"] {
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-control {
             width: 100%;
-            padding: 8px;
+            padding: 12px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            box-sizing: border-box; /* content-box -> border-box로 변경하여 패딩과 보더가 너비에 포함되도록 함 */
+            box-sizing: border-box;
             margin-top: 6px;
-            margin-bottom: 16px;
+            font-size: 16px;
         }
 
-        /* 라벨 스타일 */
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        /* 오류 메시지 스타일 */
         .error {
             color: red;
             font-size: 0.85rem;
         }
 
-        /* 버튼 스타일 */
         button {
             background-color: #007bff;
             color: white;
-            padding: 10px 15px;
+            padding: 12px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            font-size: 16px;
         }
 
         button:hover {
             background-color: #0056b3;
         }
 
-        /* 링크 버튼 스타일 */
-        a.btn-link {
+        .btn-link {
             color: #007bff;
             text-decoration: none;
+            transition: color 0.3s ease;
         }
 
-        a.btn-link:hover {
+        .btn-link:hover {
             text-decoration: underline;
+            color: #0056b3;
         }
-    </script>
+    </style>
 </head>
 <body>
 <div class="container mt-5">
-    <h3 class="mb-4 text-center">2024학년도 2학기 수강신청</h3>
+    <h3 class="mb-4">2024학년도 2학기 수강신청</h3>
     <sf:form method="post" action="${pageContext.request.contextPath}/register-submit" modelAttribute="course" class="needs-validation">
-        <div class="form-row">
-            <input type="hidden" name="year" value="2021">
-            <input type="hidden" name="semester" value="1">
-        </div>
         <div class="form-group">
             <label for="courseTitle">과목명:</label>
             <sf:input type="text" path="courseTitle" class="form-control" id="courseTitle"/>
@@ -111,7 +101,7 @@
         <div class="form-group">
             <label for="courseCode">교과코드:</label>
             <sf:input type="text" path="courseCode" class="form-control" id="courseCode" />
-            <sf:errors path="courseType" class="form-text text-muted error"/>
+            <sf:errors path="courseCode" class="form-text text-muted error"/>
         </div>
         <div class="form-group">
             <label for="professor">교수명:</label>

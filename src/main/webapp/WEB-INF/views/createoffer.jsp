@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: nykim
-  Date: 2024-03-11
-  Time: 오후 2:38
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 
@@ -13,7 +6,6 @@
     <title>Title</title>
     <link rel="stylesheet" type="text/css"
           href="${pageContext.request.contextPath}/resources/css/main.css" >
-
 </head>
 <body>
 <sf:form method="post" action="${pageContext.request.contextPath}/docreate" modelAttribute="offer">

@@ -8,24 +8,58 @@
     <meta charset="UTF-8">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .formtable {
-            width: 80%;
-            margin: 20px auto;
+            width: 100%;
             border-collapse: collapse;
         }
         .formtable th, .formtable td {
-            border: 1px solid #ccc;
-            padding: 8px;
+            border: 1px solid #e0e0e0;
+            padding: 12px 16px;
             text-align: left;
+            font-size: 16px;
         }
         .formtable th {
-            background-color: #f2f2f2;
-            color: #333;
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
         }
         .formtable tr:hover {
-            background-color: #f9f9f9;
+            background-color: #e8f4ff;
+        }
+        .total-credits {
+            text-align: right;
+            padding: 16px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .back-links {
+            text-align: right;
+            padding: 16px;
+            font-size: 16px;
+        }
+        .back-links a {
+            color: #007bff;
+            text-decoration: none;
+            margin-left: 20px;
+            padding: 8px 16px;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        .back-links a:hover {
+            background-color: #0056b3;
         }
     </style>
     <link rel="stylesheet" type="text/css"
@@ -33,30 +67,34 @@
     <title>상세 과목 조회</title>
 </head>
 <body>
-<table class="formtable">
-    <tr>
-        <th>수강년도</th>
-        <th>수강학기</th>
-        <th>교과목명</th>
-        <th>교과구분</th>
-        <th>담당교수</th>
-        <th>학점</th>
-    </tr>
-    <c:set var="totalCredits" value="0" />
-    <c:forEach var="course" items="${courses}">
+<div class="container">
+    <table class="formtable">
         <tr>
-            <td>${course.getYear()}</td>
-            <td>${course.getSemester()}</td>
-            <td>${course.getCourseTitle()}</td>
-            <td>${course.getCourseType()}</td>
-            <td>${course.getProfessor()}</td>
-            <td>${course.getCredits()}</td>
-            <c:set var="totalCredits" value="${totalCredits + course.getCredits()}" />
+            <th>수강년도</th>
+            <th>수강학기</th>
+            <th>교과목명</th>
+            <th>교과구분</th>
+            <th>담당교수</th>
+            <th>학점</th>
         </tr>
-    </c:forEach>
-</table>
-<p>총 학점: ${totalCredits}</p>
-<p><a href="${pageContext.request.contextPath}/">홈으로</a></p>
-<p><a href="${pageContext.request.contextPath}/grade-credit">목록으로</a></p>
+        <c:set var="totalCredits" value="0" />
+        <c:forEach var="course" items="${courses}">
+            <tr>
+                <td>${course.getYear()}</td>
+                <td>${course.getSemester()}</td>
+                <td>${course.getCourseTitle()}</td>
+                <td>${course.getCourseType()}</td>
+                <td>${course.getProfessor()}</td>
+                <td>${course.getCredits()}</td>
+                <c:set var="totalCredits" value="${totalCredits + course.getCredits()}" />
+            </tr>
+        </c:forEach>
+    </table>
+    <div class="total-credits">총 학점: ${totalCredits}</div>
+    <div class="back-links">
+        <a href="${pageContext.request.contextPath}/">홈으로</a>
+        <a href="${pageContext.request.contextPath}/grade-credit">목록으로</a>
+    </div>
+</div>
 </body>
 </html>
